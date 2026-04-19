@@ -1,0 +1,1177 @@
+\chapter{Lógica Proposicional}
+
+% ============================================================
+\section{¿Por qué empezamos con la Lógica?}
+% ============================================================
+
+Antes de manipular ecuaciones o estudiar estructuras abstractas, debemos entender las reglas del juego. En el lenguaje cotidiano, las palabras pueden ser ambiguas o depender del contexto, pero en matemática rige la rigurosidad. El lenguaje de las matemáticas es la \textbf{lógica proposicional}. Piensa en ella como las ``reglas del juego'' que todos los matemáticos acuerdan seguir.
+
+La lógica nos permite:
+\begin{itemize}
+    \item Construir argumentos sólidos.
+    \item Detectar errores en un razonamiento (falacias).
+    \item Comunicar ideas complejas sin dejar lugar a la interpretación personal.
+\end{itemize}
+
+En el lenguaje natural normalmente tenemos adquirida la lógica. Cuando por ejemplo tu madre te dice ``si no apruebas este examen, entonces te saco el celular'', podemos identificar dos partes bien diferenciadas:
+
+\[
+\colorbox{red!25}{\textbf{Si}}
+\quad
+\underbrace{\text{no apruebo este examen}}_{p}
+\quad
+\colorbox{red!25}{\textbf{entonces}}
+\quad
+\underbrace{\text{me sacan el celular}}_{q}
+\]
+
+\noindent
+Esto se conoce como condicional: si pasa $p$ entonces pasa $q$. ¿Cuándo cumple la madre su promesa? Pueden ocurrir cuatro situaciones:
+
+\begin{itemize}
+    \item No aprobé el examen y me sacaron el celular ($p$ es $V$ y $q$ es $V$): \textbf{la madre cumplió}.
+
+    \item No aprobé el examen y \emph{no} me sacaron el celular ($p$ es $V$ y $q$ es $F$): \textbf{la madre incumplió su promesa}. Este es el \emph{único} caso donde el condicional es falso.
+
+    \item Aprobé el examen y me sacaron el celular igual ($p$ es $F$ y $q$ es $V$): la madre no estaba obligada a nada, pero decidió sacar el celular de todas formas. \textbf{La promesa no se rompió}.
+
+    \item Aprobé el examen y no me sacaron el celular ($p$ es $F$ y $q$ es $F$): no hubo consecuencia porque no se cumplió la condición. \textbf{La promesa tampoco se rompió}.
+\end{itemize}
+
+Ahora que ya vimos cómo se comporta la lógica en la vida cotidiana, podemos dar un paso más: ponerle nombre preciso a cada una de estas ideas. Ese ejemplo con el celular no era caprichoso: era exactamente la estructura que usan los matemáticos todo el tiempo. La diferencia es que en matemática reemplazamos las oraciones cotidianas por \textbf{proposiciones}, y los conectivos ``si\ldots entonces'' por símbolos que eliminan toda ambigüedad.
+
+% ------------------------------------------------------------
+\begin{dfn}{Proposición}
+    Una \textbf{proposición} ($p$) es toda oración declarativa de la cual se puede afirmar que es verdadera ($V$) o bien falsa ($F$), pero no ambas cosas a la vez.
+\end{dfn}
+
+\begin{obs}{Convención de notación}
+    A lo largo de este material, utilizaremos las letras minúsculas $p$, $q$, $r$ (y en general cualquier letra minúscula) para denotar proposiciones. Esto es simplemente una convención, no una regla matemática: lo importante es que el símbolo elegido represente claramente una oración con valor de verdad definido.
+\end{obs}
+
+\subsubsection{\texorpdfstring{Ejemplos}{Ejemplos}}
+
+\noindent Los siguientes son ejemplos de \textbf{proposiciones válidas}, junto con su valor de verdad:
+
+\begin{itemize}
+    \item $p$ : ``2 es un número par.'' \hfill \textcolor{blue}{(V) Verdadero}
+    \item $q$ : ``$2 + 3 = 1$.'' \hfill \textcolor{blue}{(F) Falso}
+    \item $r$ : ``Todo número primo es impar.'' \hfill \textcolor{blue}{(F) Falso}
+\end{itemize}
+
+\noindent En cambio, los siguientes enunciados \textbf{no son proposiciones}, porque no pueden ser verdaderos ni falsos:
+
+\begin{itemize}
+    \item ``¿Qué edad tenés?'' \hfill \textcolor{blue}{oración interrogativa}
+    \item ``Deténgase.'' \hfill \textcolor{blue}{oración imperativa}
+    \item ``¡Qué bonita película!'' \hfill \textcolor{blue}{oración exclamativa}
+\end{itemize}
+
+\noindent Las frases interrogativas, imperativas o exclamativas no son proposiciones, pues no tienen un valor de verdad definido.
+
+% ============================================================
+\section{\texorpdfstring{Conectivos Lógicos}{Conectivos Logicos}}
+% ============================================================
+
+Un \textbf{conectivo lógico} es una palabra o símbolo que nos permite combinar dos o más proposiciones simples para formar una proposición más compleja. Así como en el lenguaje cotidiano usamos palabras como ``y'', ``o'', ``no'' o ``si\ldots entonces'' para relacionar ideas, en lógica estos mismos conceptos se formalizan con símbolos precisos que eliminan toda ambigüedad.
+
+\begin{obs}{¿Por qué necesitamos símbolos?}
+    En el lenguaje natural, una misma palabra puede tener significados distintos según el contexto. Por ejemplo, la palabra ``o'' en ``¿Querés café o té?'' suele interpretarse como \emph{uno u otro, no ambos}, mientras que en matemática el ``o'' lógico admite ambos a la vez. Los símbolos nos permiten ser exactos y evitar esa ambigüedad.
+\end{obs}
+
+% ------------------------------------------------------------
+\subsection{\texorpdfstring{Negación ($\lnot$)}{Negacion}}
+% ------------------------------------------------------------
+
+Supongamos que una persona nos dice:
+\[
+p : \text{``Hoy es 19 de marzo.''}
+\]
+Pero esa persona se equivoca: el valor de verdad de $p$ es \textbf{falso}. Nosotros podríamos responder de varias maneras:
+
+\begin{itemize}
+    \item ``Hoy \emph{no} es 19 de marzo.''
+    \item ``Es \emph{falso} que hoy sea 19 de marzo.''
+    \item ``No es cierto que hoy sea 19 de marzo.''
+\end{itemize}
+
+\noindent Notemos que estas nuevas proposiciones son verdaderas, pues si $p$ es falsa, su negación es verdadera. En matemática, esto se denota $\lnot p$ y sirve para expresar lo contrario de una proposición dada.
+
+\begin{dfn}{Negación ($\lnot$)}
+    La \textbf{negación} es un conectivo lógico unario que invierte el valor de verdad de una proposición. La negación de $p$ se denota $\lnot p$ y se lee ``$no\ p$''.
+\end{dfn}
+
+\subsubsection*{Ejemplo}
+Dada una proposición $p$, analizamos las posibilidades para $\lnot p$. Sabemos que $p$ puede tener solo dos posibilidades: ($V$) verdadero ó ($F$) falso.
+\begin{itemize}
+    \item Si $p$ es \textbf{verdadero}, $\lnot p$ es \textbf{falso}, pues la negación cambió su valor de verdad.
+    \item Si $p$ es \textbf{falso}, $\lnot p$ es \textbf{verdadero}, pues la negación cambió su valor de verdad.
+\end{itemize}
+
+\subsubsection*{Tabla de verdad de la negación}
+
+\noindent La tabla de verdad resume de forma compacta el comportamiento de un conectivo para \emph{todos} los valores posibles de la proposición involucrada. Para la negación, la proposición $p$ puede ser verdadera o falsa, lo que nos da exactamente dos filas:
+
+\begin{center}
+    \renewcommand{\arraystretch}{1.4}
+    \begin{tabular}{|c|c|}
+        \hline
+        $p$ & $\lnot p$ \\
+        \hline
+        V & F \\
+        \hline
+        F & V \\
+        \hline
+    \end{tabular}
+\end{center}
+
+\begin{obs}{¿Cuántas filas debe tener una tabla de verdad?}
+    La cantidad de filas de una tabla de verdad (sin contar el encabezado) está definida por la expresión $2^{n}$, donde $n$ es la cantidad de proposiciones distintas involucradas.
+\end{obs}
+
+\noindent Notemos que los valores de $p$ y $\lnot p$ \emph{nunca} coinciden: si $p$ es verdadera, $\lnot p$ es falsa, y viceversa. Esto confirma lo que ya intuíamos: la negación simplemente \emph{invierte} el valor de verdad.
+
+% ------------------------------------------------------------
+\subsection{\texorpdfstring{Conjunción ($\land$)}{Conjuncion}}
+% ------------------------------------------------------------
+
+Pensemos en la siguiente situación cotidiana:
+
+\begin{quote}
+    \textit{``Para entrar al partido necesitás la entrada \textbf{y} el documento de identidad.''}
+\end{quote}
+
+\noindent La condición se cumple \textbf{solo si se satisfacen las dos cosas al mismo tiempo}. Si olvidaste la entrada, no entrás. Si olvidaste el documento, tampoco. Si olvidaste ambos, mucho menos. Solo hay un camino al éxito: tener \emph{los dos}.
+
+Notemos que aquí el ``y'' conecta dos proposiciones simples y la proposición resultante es verdadera únicamente cuando \emph{ambas} partes son verdaderas. Esa es, exactamente, la idea detrás de la conjunción.
+
+\begin{dfn}{Conjunción ($\land$)}
+    La \textbf{conjunción} es un conectivo lógico binario puesto que relaciona dos proposiciones y produce una nueva proposición verdadera solo si \emph{ambas} proposiciones son verdaderas, y falsa si al menos una proposición es falsa. La conjunción de $p$ y $q$ se denota $p \land q$ y se lee ``$p$ y $q$''
+\end{dfn}
+
+\subsubsection*{Tabla de verdad de la conjunción}
+\begin{center}
+    \renewcommand{\arraystretch}{1.4}
+    \begin{tabular}{|c|c|c|}
+        \hline
+        \textbf{$p$} & \textbf{$q$} & \textbf{$p \land q$} \\
+        \hline
+        V & V & V \\
+        \hline
+        V & F & F \\
+        \hline
+        F & V & F \\
+        \hline
+        F & F & F \\
+        \hline
+    \end{tabular}
+\end{center}
+
+\subsubsection*{Ejemplos}
+
+Sean las proposiciones:
+\begin{itemize}
+    \item $p$: ``Aprobé el examen.''
+    \item $q$: ``Ordené mi cuarto.''
+\end{itemize}
+
+\noindent La proposición $p \land q$ queda como: ``Aprobé el examen \textbf{y} ordené mi cuarto.'' Analicemos los cuatro casos posibles:
+
+\begin{itemize}
+    \item Aprobé el examen \textbf{y} ordené mi cuarto. Ambas partes son verdaderas; cumplí con todo, por tanto $p \land q$ es \textbf{V}.
+    \item Aprobé el examen \textbf{pero no} ordené mi cuarto. No cumplí una de las partes, por tanto $p \land q$ es \textbf{F}.
+    \item \textbf{No} aprobé el examen, aunque sí ordené mi cuarto. Igual que el caso anterior, por tanto $p \land q$ es \textbf{F}.
+    \item \textbf{No} aprobé el examen \textbf{ni} ordené mi cuarto. No cumplí con ninguna, así que $p \land q$ es \textbf{F}.
+\end{itemize}
+
+% ------------------------------------------------------------
+\subsection{\texorpdfstring{Disyunción ($\lor$)}{Disyuncion}}
+% ------------------------------------------------------------
+
+Imaginemos que vamos a la librería a comprar un marcador y el vendedor nos dice:
+
+\begin{quote}
+    \textit{``de color azul o negro''}
+\end{quote}
+
+\noindent En este contexto debemos elegir entre una de las dos opciones, pero también podríamos considerar una tercera posibilidad: comprar ambos marcadores, ya que sería cierto que queremos los dos colores. ¿El ``o'' del vendedor incluía esa posibilidad o no?
+
+En la vida diaria el ``o'' suele ser ambiguo: a veces incluye la posibilidad de que \emph{ambas} cosas sean ciertas, a veces no. En matemática adoptamos el \textbf{``o'' inclusivo} como el símbolo $\lor$.
+
+\begin{dfn}{Disyunción inclusiva ($\vee$)}
+    La \textbf{disyunción (inclusiva)} es un conectivo lógico binario puesto que relaciona dos proposiciones y produce una proposición verdadera cuando \emph{al menos una} de las dos es verdadera, y falsa únicamente cuando \emph{ambas} son falsas. La disyunción de $p$ y $q$ se denota $p \lor q$, se lee ``$p$ o $q$''
+\end{dfn}
+
+\subsubsection*{Tabla de verdad de la disyunción}
+\begin{center}
+    \renewcommand{\arraystretch}{1.4}
+    \begin{tabular}{|c|c|c|}
+        \hline
+        \textbf{$p$} & \textbf{$q$} & \textbf{$p \lor q$} \\
+        \hline
+        V & V & V \\
+        \hline
+        V & F & V \\
+        \hline
+        F & V & V \\
+        \hline
+        F & F & F \\
+        \hline
+    \end{tabular}
+\end{center}
+
+\begin{obs}{A la hora de ver una disyunción}
+    Cuando se trata de una disyunción, solo hace falta que una de las dos proposiciones sea verdadera para que el resultado lo sea. Solo cuando la primera es falsa necesitamos evaluar la segunda para conocer el valor de verdad de la oración completa.
+\end{obs}
+
+\subsubsection*{Ejemplos}
+
+La expresión $a \geq b$ se define como la proposición compuesta $(a>b) \lor (a=b)$. Analizamos las posibilidades:
+
+\begin{enumerate}[label=\alph*)]
+    \item Si $a = 3$ y $b = 2$, la expresión queda $3 \geq 2$ \textcolor{blue}{($V$) verdadero}
+    \[
+    \underbrace{
+        \underbrace{3 > 2}_{V}
+        \quad \lor \quad
+        \underbrace{3 = 2}_{F}
+    }_{V}
+    \]
+
+    \item Si $a = 2$ y $b = 2$, la expresión queda $2 \geq 2$ \textcolor{blue}{($V$) verdadero}
+    \[
+    \underbrace{
+        \underbrace{2 > 2}_{F}
+        \quad \lor \quad
+        \underbrace{2 = 2}_{V}
+    }_{V}
+    \]
+
+    \item Si $a = 2$ y $b = 3$, la expresión queda $2 \geq 3$ \textcolor{blue}{($F$) falso}
+    \[
+    \underbrace{
+        \underbrace{2 > 3}_{F}
+        \quad \lor \quad
+        \underbrace{2 = 3}_{F}
+    }_{F}
+    \]
+\end{enumerate}
+
+% ------------------------------------------------------------
+\subsection{\texorpdfstring{Disyunción Exclusiva ($\veebar$)}{Disyuncion Exclusiva}}
+% ------------------------------------------------------------
+
+\noindent La disyunción exclusiva se utiliza en el lenguaje coloquial cuando queremos dar a elegir entre dos opciones pero no ambas a la vez: ``o bien $p$ o bien $q$''.
+
+\begin{dfn}{Disyunción Exclusiva ($\veebar$)}
+    La \textbf{disyunción exclusiva} es un conectivo lógico binario puesto que relaciona dos proposiciones y produce una nueva proposición verdadera cuando sus valores de verdad son \emph{distintos}, y falsa cuando son \emph{iguales}. La disyunción exclusiva entre $p$ y $q$ se denota $p \veebar q$, se lee ``o bien $p$ o bien $q$''
+\end{dfn}
+
+\subsubsection*{Tabla de verdad de la disyunción exclusiva}
+\begin{center}
+    \renewcommand{\arraystretch}{1.4}
+    \begin{tabular}{|c|c|c|}
+        \hline
+        \textbf{$p$} & \textbf{$q$} & \textbf{$p \veebar q$} \\
+        \hline
+        V & V & F \\
+        \hline
+        V & F & V \\
+        \hline
+        F & V & V \\
+        \hline
+        F & F & F \\
+        \hline
+    \end{tabular}
+\end{center}
+
+\subsubsection*{Ejemplos}
+
+Definimos las siguientes proposiciones:
+\begin{itemize}
+    \item $p:$ 3 es un número par \textcolor{blue}{($F$)}
+    \item $q:$ un cubo tiene 4 esquinas \textcolor{blue}{($F$)}
+    \item $r:$ $\dfrac{1}{2} \in \mathbb{Q}$ \textcolor{blue}{($V$)}
+\end{itemize}
+
+\begin{enumerate}[label=\alph*)]
+    \item Analizar $p \veebar q$:
+    \[
+    \underbrace{
+        \underbrace{\text{3 es par}}_{F}
+        \quad \veebar \quad
+        \underbrace{\text{cubo tiene 4 esquinas}}_{F}
+    }_{F}
+    \]
+
+    \item Analizar $p \veebar r$:
+    \[
+    \underbrace{
+        \underbrace{\text{3 es par}}_{F}
+        \quad \veebar \quad
+        \underbrace{\dfrac{1}{2} \in \mathbb{Q}}_{V}
+    }_{V}
+    \]
+\end{enumerate}
+
+% ------------------------------------------------------------
+\subsection{\texorpdfstring{Condicional o Implicación ($\Rightarrow$)}{Condicional}}
+% ------------------------------------------------------------
+
+El condicional o implicación es un tipo de proposición que usamos frecuentemente en la vida cotidiana. Consideremos la siguiente proposición:
+
+\[
+\colorbox{red!25}{\textbf{Si}}
+\quad
+\underbrace{\text{Pablo hace su tarea}}_{p}
+\quad
+\colorbox{red!25}{\textbf{entonces}}
+\quad
+\underbrace{\text{Pablo podrá salir a jugar}}_{q}
+\]
+
+Podemos ver que la oración es una promesa: si Pablo cumple su parte, le conceden el permiso de salir. Analicemos las posibilidades:
+
+\begin{itemize}
+    \item Pablo hace su tarea \textbf{y} tiene permiso para ir a jugar: \textcolor{blue}{verdadero}, pues se cumple la promesa.
+    \item Pablo hace su tarea \textbf{pero no} le dan permiso: \textcolor{blue}{falso}, pues Pablo cumplió su parte y la promesa se rompió.
+    \item Pablo \textbf{no} hace su tarea \textbf{y} puede ir a jugar: \textcolor{blue}{verdadero}, si bien Pablo no cumplió, la promesa no dice qué pasa en ese caso.
+    \item Pablo \textbf{no} hace su tarea \textbf{y no} puede ir a jugar: \textcolor{blue}{verdadero}, mismo razonamiento.
+\end{itemize}
+
+\begin{dfn}{Condicional o implicación ($\Rightarrow$)}
+    El \textbf{condicional o implicación} es un conectivo lógico binario puesto que relaciona dos proposiciones y produce una nueva proposición que es \textbf{falsa únicamente} cuando el antecedente es verdadero y el consecuente es falso. El condicional entre $p$ y $q$ se denota $p \Rightarrow q$, se lee ``si $p$, entonces $q$''
+\end{dfn}
+
+El condicional tiene orden: sus partes reciben nombre propio:
+\[
+\underbrace{p}_{\text{Antecedente}}
+\quad \Rightarrow \quad
+\underbrace{q}_{\text{Consecuente}}
+\]
+
+\subsubsection*{Tabla de verdad de la implicación}
+\begin{center}
+    \renewcommand{\arraystretch}{1.4}
+    \begin{tabular}{|c|c|c|}
+        \hline
+        \textbf{$p$} & \textbf{$q$} & \textbf{$p \Rightarrow q$} \\
+        \hline
+        V & V & V \\
+        \hline
+        V & F & F \\
+        \hline
+        F & V & V \\
+        \hline
+        F & F & V \\
+        \hline
+    \end{tabular}
+\end{center}
+
+\subsubsection*{Variaciones de la implicación}
+
+A partir de $p \Rightarrow q$ se definen las siguientes formas asociadas:
+
+\begin{itemize}
+    \item \textbf{Implicación directa:} $p \Rightarrow q$
+    \item \textbf{Implicación recíproca:} $q \Rightarrow p$
+    \item \textbf{Implicación contraria:} $\lnot p \Rightarrow \lnot q$
+    \item \textbf{Implicación contrarrecíproca:} $\lnot q \Rightarrow \lnot p$
+\end{itemize}
+
+La implicación directa $p \Rightarrow q$ puede leerse de distintas maneras:
+\begin{itemize}
+    \item $p$ implica $q$
+    \item si $p$, entonces $q$
+    \item $q$ si $p$
+    \item $p$ sólo si $q$
+    \item $q$ se sigue de $p$
+    \item $p$ es condición suficiente para $q$
+    \item $q$ es condición necesaria para $p$
+\end{itemize}
+
+% ------------------------------------------------------------
+\subsection{\texorpdfstring{Bicondicional o Doble implicación ($\Leftrightarrow$)}{Bicondicional}}
+% ------------------------------------------------------------
+
+El bicondicional surge de la unión entre la implicación y su recíproca: $(p \Rightarrow q) \land (q \Rightarrow p)$. Relaciona dos enunciados de manera que ambos comparten el mismo valor de verdad. Veamos el siguiente enunciado:
+
+\[
+\underbrace{\text{Las calles están mojadas}}_{p}
+\quad
+\colorbox{red!25}{\textbf{si, y solo si}}
+\quad
+\underbrace{\text{ha llovido}}_{q}
+\]
+
+Propongamos un contraejemplo: en la ciudad se rompió un medidor de agua que causó una fuga y mojó las calles sin que haya llovido. Esto hace \textbf{falso} al bicondicional, pues conocemos un caso donde $p$ es verdadero y $q$ es falso.
+
+\begin{dfn}{Bicondicional o Doble implicación ($\Leftrightarrow$)}
+    El \textbf{bicondicional} es un conectivo lógico binario puesto que relaciona dos proposiciones y produce una nueva proposición que es \textbf{verdadera} únicamente si sus valores de verdad son \textbf{iguales}, y \textbf{falsa} si son \textbf{distintos}. El bicondicional entre $p$ y $q$ se denota $p \Leftrightarrow q$, se lee ``$p$ si, y sólo si $q$''
+\end{dfn}
+
+\subsubsection*{Tabla de verdad del bicondicional}
+\begin{center}
+    \renewcommand{\arraystretch}{1.4}
+    \begin{tabular}{|c|c|c|}
+        \hline
+        \textbf{$p$} & \textbf{$q$} & \textbf{$p \Leftrightarrow q$} \\
+        \hline
+        V & V & V \\
+        \hline
+        V & F & F \\
+        \hline
+        F & V & F \\
+        \hline
+        F & F & V \\
+        \hline
+    \end{tabular}
+\end{center}
+
+\begin{dfn}{Equivalencia lógica}
+    Al analizar las tablas de verdad, podemos identificar combinaciones de enunciados cuyos valores resultantes coinciden para cada asignación de valores de verdad de sus componentes. A esto lo denominamos \textbf{equivalencia lógica}. Decimos que dos proposiciones compuestas son lógicamente equivalentes si sus tablas de verdad son idénticas, lo cual se denota como $P \equiv Q$. Análogamente, $P \not\equiv Q$ significa que las proposiciones no son equivalentes.
+\end{dfn}
+
+\subsubsection*{Ejemplo}
+
+Veamos que $p \Leftrightarrow q \equiv (p \Rightarrow q) \land (q \Rightarrow p)$ comparando sus tablas de verdad:
+
+\begin{center}
+    \renewcommand{\arraystretch}{1.4}
+    \begin{tabular}{|c|c|c|}
+        \hline
+        \textbf{$p$} & \textbf{$q$} & \textbf{$p \Leftrightarrow q$} \\
+        \hline
+        V & V & V \\
+        \hline
+        V & F & F \\
+        \hline
+        F & V & F \\
+        \hline
+        F & F & V \\
+        \hline
+    \end{tabular}
+    \qquad
+    \renewcommand{\arraystretch}{1.4}
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        \textbf{$p$} & \textbf{$q$} & \textbf{$p \Rightarrow q$} & \textbf{$q \Rightarrow p$} & \textbf{$(p \Rightarrow q) \land (q \Rightarrow p)$} \\
+        \hline
+        V & V & V & V & V \\
+        \hline
+        V & F & F & V & F \\
+        \hline
+        F & V & V & F & F \\
+        \hline
+        F & F & V & V & V \\
+        \hline
+    \end{tabular}
+\end{center}
+
+Ambas columnas finales son idénticas, lo que confirma que $p \Leftrightarrow q \equiv (p \Rightarrow q) \land (q \Rightarrow p)$.
+
+% ------------------------------------------------------------
+\subsection*{Reglas de precedencia}
+% ------------------------------------------------------------
+
+Al trabajar con conectivos lógicos, el orden en que se evalúan las operaciones puede alterar el resultado final. Para evitar ambigüedades y reducir el uso excesivo de paréntesis, se establecen las reglas de precedencia.
+
+\begin{dfn}{Reglas de precedencia}
+    Para simplificar la escritura de fórmulas proposicionales y minimizar el uso de paréntesis, se define el siguiente orden de prioridad para los conectivos lógicos (de mayor a menor jerarquía):
+    \begin{enumerate}
+        \item Negación ($\lnot$)
+        \item Conjunción ($\land$)
+        \item Disyunción ($\vee, \veebar$)
+        \item Condicional ($\Rightarrow$)
+        \item Bicondicional ($\Leftrightarrow$)
+    \end{enumerate}
+    Al encontrarse conectivos de igual jerarquía, se evalúan de izquierda a derecha.
+\end{dfn}
+
+\begin{dfn}{Tautología --- Contradicción --- Contingencia}
+    Dada una proposición compuesta $P = P(p_1, p_2, \dots, p_n)$:
+    \begin{itemize}
+        \item Es una \textbf{tautología} si es verdadera para \emph{todos} los posibles valores de verdad de sus componentes.
+        \item Es una \textbf{contradicción} si es falsa para \emph{todos} los posibles valores de verdad de sus componentes.
+        \item Es una \textbf{contingencia} si no es ni tautología ni contradicción.
+    \end{itemize}
+\end{dfn}
+
+\newpage
+\subsection{Propiedades de los conectivos lógicos}
+Sean $p$, $q$, $r$ y $s$ proposiciones, $\textbf{V}$ una tautología y $\textbf{F}$ una contradicción se definen las siguientes propiedades:
+
+\begin{enumerate}[label=\alph*)]
+\item \textbf{Propiedad conmutativa} ($\land$)($\vee$)
+	\[p \land q \equiv q \land p\]
+	\[p \vee q \equiv q \vee p\]
+\item \textbf{Propiedad asociativa} ($\land$)($\vee$)
+	\[(p \land q) \land r \equiv p \land (q \land r)\]
+	\[(p \vee q) \vee r \equiv p \vee (q \vee r) \]
+\item \textbf{Idempotencia} ($\land$)($\vee$)
+	\[p \land p \equiv p\]
+	\[p \vee p \equiv p\]
+\item \textbf{Doble negación}
+	\[\lnot (\lnot p) \equiv p\]
+\item \textbf{Distributiva} de la conjunción respecto de la disyunción
+	\[p \land (q \vee r) \equiv (p \land q) \vee (p \land r)\]
+\item \textbf{Distributiva} de la diyunción respecto de la conjunción
+	\[p \vee (q \land r) \equiv (p \vee q) \land (p \vee r)\]
+\item \textbf{Ley de De Morgan} (negación de una conjunción)
+	\[\lnot (p \land q) \equiv \lnot p \vee \lnot q\]
+\item \textbf{Ley de De Morgan} (negación de una disyunción)	
+	\[\lnot (p \vee q) \equiv \lnot p \land \lnot q\]
+\item \textbf{Contrarrecíproca} de la implicación
+	\[p \Rightarrow q \equiv \lnot q \Rightarrow \lnot p  \]
+\item \textbf{Condicional como disyunción}
+	\[p \Rightarrow q \equiv (\lnot p) \vee q  \]
+\item \textbf{Negación del condicional}
+	\[ \lnot (p \Rightarrow q) \equiv p \land (\lnot q)  \]
+\item \textbf{Modus ponens}
+	\[ [ \ p \land ( \ p \Rightarrow q \ ) \ ] \Rightarrow q \equiv \textbf{V}\]
+\item \textbf{Modus tollens}
+	\[ [ \ ( \ p \Rightarrow q \ ) \land \lnot q \ ] \Rightarrow \lnot p \equiv \textbf{V}  \]
+\item \textbf{Silogismo hipotético}
+	\[[ \ ( \ p \Rightarrow q \ ) \ \land \ ( \ q \Rightarrow r \ ) \ ] \Rightarrow ( \ p \Rightarrow r \ ) \equiv \textbf{V}\] 
+\item \textbf{absorción}
+	\[ p \land ( \ p \vee q \ ) \equiv \ p \]
+	\[ p \vee ( \ p \land q \ ) \equiv \ p \]
+\item \textbf{Principio de contradicción}
+	\[ p \land (\lnot p) \equiv \textbf{F}\]
+\item \textbf{Principio del tercero excluido}	
+	\[ p \vee \lnot p \equiv \textbf{V} \]
+\item \textbf{Dominancia de la conjunción}
+	\[ p \land \textbf{F} \equiv \textbf{F} \]
+\item \textbf{Dominancia de la disyunción}
+	\[ p \vee \textbf{V} \equiv \textbf{V} \]
+\item \textbf{Identidad de la conjunción}	
+	\[ p \land \textbf{V} \equiv p \]
+\item \textbf{Identidad de la diyunción}	
+	\[ p \vee \textbf{F} \equiv p \]
+\end{enumerate}
+
+\subsubsection{Demostración}
+\begin{enumerate}[label=\alph*)]
+%-------------------------------------------------------------
+% a) PROPIEDAD CONMUTATIVA
+%-------------------------------------------------------------
+\item \textbf{Propiedad conmutativa} ($\land$)($\vee$)
+\[p \land q \equiv q \land p \qquad p \vee q \equiv q \vee p\]
+
+\begin{center}
+	\renewcommand{\arraystretch}{1.4}
+	\begin{tabular}{|c|c|c|c||c|}
+		\hline
+		$p$ & $q$ & $p \land q$ & $q \land p$ & $p \land q \equiv q \land p$ \\
+		\hline
+		\V & \V & \V & \V & \V \\
+		\hline
+		\V & \F & \F & \F & \V \\
+		\hline
+		\F & \V & \F & \F & \V \\
+		\hline
+		\F & \F & \F & \F & \V \\
+		\hline
+	\end{tabular}
+\end{center}
+
+\begin{center}
+	\renewcommand{\arraystretch}{1.4}
+	\begin{tabular}{|c|c|c|c||c|}
+		\hline
+		$p$ & $q$ & $p \vee q$ & $q \vee p$ & $p \vee q \equiv q \vee p$ \\
+		\hline
+		\V & \V & \V & \V & \V \\
+		\hline
+		\V & \F & \V & \V & \V \\
+		\hline
+		\F & \V & \V & \V & \V \\
+		\hline
+		\F & \F & \F & \F & \V \\
+		\hline
+	\end{tabular}
+\end{center}
+\newpage
+%-------------------------------------------------------------
+% b) PROPIEDAD ASOCIATIVA
+%-------------------------------------------------------------
+\item \textbf{Propiedad asociativa} ($\land$)($\vee$)
+\[(p \land q) \land r \equiv p \land (q \land r) \qquad (p \vee q) \vee r \equiv p \vee (q \vee r)\]
+
+\begin{center}
+	\renewcommand{\arraystretch}{1.4}
+	\begin{tabular}{|c|c|c|c|c|c||c|}
+		\hline
+		$p$ & $q$ & $r$ & $p \land q$ & $(p \land q) \land r$ & $p \land (q \land r)$ & $(p \land q) \land r \equiv p \land (q \land r)$ \\
+		\hline
+		\V & \V & \V & \V & \V  & \V & \V \\
+		\hline
+		\V & \V & \F & \V & \F  & \F & \V \\
+		\hline
+		\V & \F & \V & \F & \F  & \F & \V \\
+		\hline
+		\V & \F & \F & \F & \F  & \F & \V \\
+		\hline
+		\F & \V & \V & \F & \F  & \F & \V \\
+		\hline
+		\F & \V & \F & \F & \F  & \F & \V \\
+		\hline
+		\F & \F & \V & \F & \F  & \F & \V \\
+		\hline
+		\F & \F & \F & \F & \F  & \F & \V \\
+		\hline
+	\end{tabular}
+\end{center}
+
+\begin{center}
+	\renewcommand{\arraystretch}{1.4}
+	\begin{tabular}{|c|c|c|c|c|c||c|}
+		\hline
+		$p$ & $q$ & $r$ & $p \vee q$ & $(p \vee q) \vee r$ &  $p \vee (q \vee r)$ & $(p \vee q) \vee r \equiv p \vee (q \vee r)$ \\
+		\hline
+		\V & \V & \V & \V & \V &  \V & \V \\
+		\hline
+		\V & \V & \F & \V & \V &  \V & \V \\
+		\hline
+		\V & \F & \V & \V & \V &  \V & \V \\
+		\hline
+		\V & \F & \F & \V & \V &  \V & \V \\
+		\hline
+		\F & \V & \V & \V & \V &  \V & \V \\
+		\hline
+		\F & \V & \F & \V & \V &  \V & \V \\
+		\hline
+		\F & \F & \V & \F & \V &  \V & \V \\
+		\hline
+		\F & \F & \F & \F & \F &  \F & \V \\
+		\hline
+	\end{tabular}
+\end{center}
+
+%-------------------------------------------------------------
+% c) IDEMPOTENCIA
+%-------------------------------------------------------------
+\item \textbf{Idempotencia} ($\land$)($\vee$)
+\[p \land p \equiv p \qquad p \vee p \equiv p\]
+
+\begin{center}
+	\renewcommand{\arraystretch}{1.4}
+	\begin{tabular}{|c|c||c|}
+		\hline
+		$p$ & $p \land p$ & $p \land p \equiv p$ \\
+		\hline
+		\V & \V & \V \\
+		\hline
+		\F & \F & \V \\
+		\hline
+	\end{tabular}
+	\qquad
+	\begin{tabular}{|c|c||c|}
+		\hline
+		$p$ & $p \vee p$ & $p \vee p \equiv p$ \\
+		\hline
+		\V & \V & \V \\
+		\hline
+		\F & \F & \V \\
+		\hline
+	\end{tabular}
+\end{center}
+
+%-------------------------------------------------------------
+% d) DOBLE NEGACIÓN
+%-------------------------------------------------------------
+\item \textbf{Doble negación}
+\[\lnot(\lnot p) \equiv p\]
+
+\begin{center}
+	\renewcommand{\arraystretch}{1.4}
+	\begin{tabular}{|c|c|c||c|}
+		\hline
+		$p$ & $\lnot p$ & $\lnot(\lnot p)$ & $\lnot(\lnot p) \equiv p$ \\
+		\hline
+		\V & \F & \V & \V \\
+		\hline
+		\F & \V & \F & \V \\
+		\hline
+	\end{tabular}
+\end{center}
+
+%-------------------------------------------------------------
+% e) DISTRIBUTIVA DE LA CONJUNCIÓN RESPECTO DE LA DISYUNCIÓN
+%-------------------------------------------------------------
+\item \textbf{Distributiva} de la conjunción respecto de la disyunción
+\[p \land (q \vee r) \equiv (p \land q) \vee (p \land r)\]
+
+\begin{center}
+	\renewcommand{\arraystretch}{1.4}
+	\begin{tabular}{|c|c|c|c|c||c|c|c|}
+		\hline
+		$p$ & $q$ & $r$ & $q \vee r$ & $p \land (q \vee r)$ & $p \land q$ & $p \land r$ & $(p \land q) \vee (p \land r)$ \\
+		\hline
+		\V & \V & \V & \V & \V & \V & \V & \V \\
+		\hline
+		\V & \V & \F & \V & \V & \V & \F & \V \\
+		\hline
+		\V & \F & \V & \V & \V & \F & \V & \V \\
+		\hline
+		\V & \F & \F & \F & \F & \F & \F & \F \\
+		\hline
+		\F & \V & \V & \V & \F & \F & \F & \F \\
+		\hline
+		\F & \V & \F & \V & \F & \F & \F & \F \\
+		\hline
+		\F & \F & \V & \V & \F & \F & \F & \F \\
+		\hline
+		\F & \F & \F & \F & \F & \F & \F & \F \\
+		\hline
+	\end{tabular}
+\end{center}
+\noindent La columna 5 y la columna 8 son idénticas, por tanto la equivalencia es una \textbf{tautología}.
+
+%-------------------------------------------------------------
+% f) DISTRIBUTIVA DE LA DISYUNCIÓN RESPECTO DE LA CONJUNCIÓN
+%-------------------------------------------------------------
+\item \textbf{Distributiva} de la disyunción respecto de la conjunción
+\[p \vee (q \land r) \equiv (p \vee q) \land (p \vee r)\]
+
+\begin{center}
+	\renewcommand{\arraystretch}{1.4}
+	\begin{tabular}{|c|c|c|c|c||c|c|c|}
+		\hline
+		$p$ & $q$ & $r$ & $q \land r$ & $p \vee (q \land r)$ & $p \vee q$ & $p \vee r$ & $(p \vee q) \land (p \vee r)$ \\
+		\hline
+		\V & \V & \V & \V & \V & \V & \V & \V \\
+		\hline
+		\V & \V & \F & \F & \V & \V & \V & \V \\
+		\hline
+		\V & \F & \V & \F & \V & \V & \V & \V \\
+		\hline
+		\V & \F & \F & \F & \V & \V & \V & \V \\
+		\hline
+		\F & \V & \V & \V & \V & \V & \V & \V \\
+		\hline
+		\F & \V & \F & \F & \F & \V & \F & \F \\
+		\hline
+		\F & \F & \V & \F & \F & \F & \V & \F \\
+		\hline
+		\F & \F & \F & \F & \F & \F & \F & \F \\
+		\hline
+	\end{tabular}
+\end{center}
+\noindent La columna 5 y la columna 8 son idénticas, por tanto la equivalencia es una \textbf{tautología}.
+
+%-------------------------------------------------------------
+% g) LEY DE DE MORGAN (negación de conjunción)
+%-------------------------------------------------------------
+\item \textbf{Ley de De Morgan} (negación de una conjunción)
+\[\lnot(p \land q) \equiv \lnot p \vee \lnot q\]
+
+\begin{center}
+	\renewcommand{\arraystretch}{1.4}
+	\begin{tabular}{|c|c|c|c|c|c||c|}
+		\hline
+		$p$ & $q$ & $\lnot p$ & $\lnot q$ & $\lnot(p \land q)$ & $\lnot p \vee \lnot q$ & $\lnot(p \land q) \equiv \lnot p \vee \lnot q$ \\
+		\hline
+		\V & \V & \F & \F & \F & \F & \V \\
+		\hline
+		\V & \F & \F & \V & \V & \V & \V \\
+		\hline
+		\F & \V & \V & \F & \V & \V & \V \\
+		\hline
+		\F & \F & \V & \V & \V & \V & \V \\
+		\hline
+	\end{tabular}
+\end{center}
+
+%-------------------------------------------------------------
+% h) LEY DE DE MORGAN (negación de disyunción)
+%-------------------------------------------------------------
+\item \textbf{Ley de De Morgan} (negación de una disyunción)
+\[\lnot(p \vee q) \equiv \lnot p \land \lnot q\]
+
+\begin{center}
+	\renewcommand{\arraystretch}{1.4}
+	\begin{tabular}{|c|c|c|c|c|c||c|}
+		\hline
+		$p$ & $q$ & $\lnot p$ & $\lnot q$ & $\lnot(p \vee q)$ & $\lnot p \land \lnot q$ & $\lnot(p \vee q) \equiv \lnot p \land \lnot q$ \\
+		\hline
+		\V & \V & \F & \F & \F & \F & \V \\
+		\hline
+		\V & \F & \F & \V & \F & \F & \V \\
+		\hline
+		\F & \V & \V & \F & \F & \F & \V \\
+		\hline
+		\F & \F & \V & \V & \V & \V & \V \\
+		\hline
+	\end{tabular}
+\end{center}
+
+%-------------------------------------------------------------
+% i) CONTRARRECÍPROCA
+%-------------------------------------------------------------
+\item \textbf{Contrarrecíproca} de la implicación
+\[p \Rightarrow q \equiv \lnot q \Rightarrow \lnot p\]
+
+\begin{center}
+	\renewcommand{\arraystretch}{1.4}
+	\begin{tabular}{|c|c|c|c|c|c||c|}
+		\hline
+		$p$ & $q$ & $\lnot p$ & $\lnot q$ & $p \Rightarrow q$ & $\lnot q \Rightarrow \lnot p$ & $p \Rightarrow q \equiv \lnot q \Rightarrow \lnot p$ \\
+		\hline
+		\V & \V & \F & \F & \V & \V & \V \\
+		\hline
+		\V & \F & \F & \V & \F & \F & \V \\
+		\hline
+		\F & \V & \V & \F & \V & \V & \V \\
+		\hline
+		\F & \F & \V & \V & \V & \V & \V \\
+		\hline
+	\end{tabular}
+\end{center}
+
+%-------------------------------------------------------------
+% j) CONDICIONAL COMO DISYUNCIÓN
+%-------------------------------------------------------------
+\item \textbf{Condicional como disyunción}
+\[p \Rightarrow q \equiv (\lnot p) \vee q\]
+
+\begin{center}
+	\renewcommand{\arraystretch}{1.4}
+	\begin{tabular}{|c|c|c|c|c||c|}
+		\hline
+		$p$ & $q$ & $\lnot p$ & $p \Rightarrow q$ & $(\lnot p) \vee q$ & $p \Rightarrow q \equiv (\lnot p) \vee q$ \\
+		\hline
+		\V & \V & \F & \V & \V & \V \\
+		\hline
+		\V & \F & \F & \F & \F & \V \\
+		\hline
+		\F & \V & \V & \V & \V & \V \\
+		\hline
+		\F & \F & \V & \V & \V & \V \\
+		\hline
+	\end{tabular}
+\end{center}
+
+%-------------------------------------------------------------
+% k) NEGACIÓN DEL CONDICIONAL
+%-------------------------------------------------------------
+\item \textbf{Negación del condicional}
+\[\lnot(p \Rightarrow q) \equiv p \land (\lnot q)\]
+
+\begin{center}
+	\renewcommand{\arraystretch}{1.4}
+	\begin{tabular}{|c|c|c|c|c|c||c|}
+		\hline
+		$p$ & $q$ & $\lnot q$ & $p \Rightarrow q$ & $\lnot(p \Rightarrow q)$ & $p \land (\lnot q)$ & $\lnot(p \Rightarrow q) \equiv p \land (\lnot q)$ \\
+		\hline
+		\V & \V & \F & \V & \F & \F & \V \\
+		\hline
+		\V & \F & \V & \F & \V & \V & \V \\
+		\hline
+		\F & \V & \F & \V & \F & \F & \V \\
+		\hline
+		\F & \F & \V & \V & \F & \F & \V \\
+		\hline
+	\end{tabular}
+\end{center}
+\newpage
+%-------------------------------------------------------------
+% l) MODUS PONENS
+%-------------------------------------------------------------
+\item \textbf{Modus ponens}
+\[\bigl[p \land (p \Rightarrow q)\bigr] \Rightarrow q \equiv \mathbf{V}\]
+
+\begin{center}
+	\renewcommand{\arraystretch}{1.4}
+	\begin{tabular}{|c|c|c|c||c|}
+		\hline
+		$p$ & $q$ & $p \Rightarrow q$ & $p \land (p \Rightarrow q)$ & $\bigl[p \land (p \Rightarrow q)\bigr] \Rightarrow q$ \\
+		\hline
+		\V & \V & \V & \V & \V \\
+		\hline
+		\V & \F & \F & \F & \V \\
+		\hline
+		\F & \V & \V & \F & \V \\
+		\hline
+		\F & \F & \V & \F & \V \\
+		\hline
+	\end{tabular}
+\end{center}
+\noindent La última columna es siempre \textbf{V}: el modus ponens es una \textbf{tautología}.
+
+%-------------------------------------------------------------
+% m) MODUS TOLLENS
+%-------------------------------------------------------------
+\item \textbf{Modus tollens}
+\[\bigl[(p \Rightarrow q) \land \lnot q\bigr] \Rightarrow \lnot p \equiv \mathbf{V}\]
+
+\begin{center}
+	\renewcommand{\arraystretch}{1.4}
+	\begin{tabular}{|c|c|c|c|c|c||c|}
+		\hline
+		$p$ & $q$ & $\lnot p$ & $\lnot q$ & $p \Rightarrow q$ & $(p \Rightarrow q) \land \lnot q$ & $\bigl[(p \Rightarrow q) \land \lnot q\bigr] \Rightarrow \lnot p$ \\
+		\hline
+		\V & \V & \F & \F & \V & \F & \V \\
+		\hline
+		\V & \F & \F & \V & \F & \F & \V \\
+		\hline
+		\F & \V & \V & \F & \V & \F & \V \\
+		\hline
+		\F & \F & \V & \V & \V & \V & \V \\
+		\hline
+	\end{tabular}
+\end{center}
+\noindent La última columna es siempre \textbf{V}: el modus tollens es una \textbf{tautología}.
+
+%-------------------------------------------------------------
+% n) SILOGISMO HIPOTÉTICO
+%-------------------------------------------------------------
+\item \textbf{Silogismo hipotético}
+\[\bigl[(p \Rightarrow q) \land (q \Rightarrow r)\bigr] \Rightarrow (p \Rightarrow r) \equiv \mathbf{V}\]
+
+\begin{center}
+	\renewcommand{\arraystretch}{1.4}
+	\begin{tabular}{|c|c|c|c|c|c|c||c|}
+		\hline
+		$p$ & $q$ & $r$ & $p \Rightarrow q$ & $q \Rightarrow r$ & $p \Rightarrow r$ & $(p \Rightarrow q) \land (q \Rightarrow r)$ & $\bigl[(p \Rightarrow q) \land (q \Rightarrow r)\bigr] \Rightarrow (p \Rightarrow r)$ \\
+		\hline
+		\V & \V & \V & \V & \V & \V & \V & \V \\
+		\hline
+		\V & \V & \F & \V & \F & \F & \F & \V \\
+		\hline
+		\V & \F & \V & \F & \V & \V & \F & \V \\
+		\hline
+		\V & \F & \F & \F & \V & \F & \F & \V \\
+		\hline
+		\F & \V & \V & \V & \V & \V & \V & \V \\
+		\hline
+		\F & \V & \F & \V & \F & \V & \F & \V \\
+		\hline
+		\F & \F & \V & \V & \V & \V & \V & \V \\
+		\hline
+		\F & \F & \F & \V & \V & \V & \V & \V \\
+		\hline
+	\end{tabular}
+\end{center}
+\noindent La última columna es siempre \textbf{V}: el silogismo hipotético es una \textbf{tautología}.
+\newpage
+%-------------------------------------------------------------
+% o) ABSORCIÓN
+%-------------------------------------------------------------
+\item \textbf{Absorción}
+\[p \land (p \vee q) \equiv p \qquad p \vee (p \land q) \equiv p\]
+
+\begin{center}
+	\renewcommand{\arraystretch}{1.4}
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		$p$ & $q$ & $p \vee q$ & $p \land (p \vee q)$ & $[p \land (p \vee q)] \equiv p$ \\
+		\hline
+		\V & \V & \V & \V & \V \\
+		\hline
+		\V & \F & \V & \V & \V \\
+		\hline
+		\F & \V & \V & \F & \V \\
+		\hline
+		\F & \F & \F & \F & \V \\
+		\hline
+	\end{tabular}
+\end{center}
+
+\begin{center}
+	\renewcommand{\arraystretch}{1.4}
+	\begin{tabular}{|c|c|c|c||c|}
+		\hline
+		$p$ & $q$ & $p \land q$ & $p \vee (p \land q)$ & $p \vee (p \land q) \equiv p$ \\
+		\hline
+		\V & \V & \V & \V & \V \\
+		\hline
+		\V & \F & \F & \V & \V \\
+		\hline
+		\F & \V & \F & \F & \V \\
+		\hline
+		\F & \F & \F & \F & \V \\
+		\hline
+	\end{tabular}
+\end{center}
+
+%-------------------------------------------------------------
+% p) PRINCIPIO DE CONTRADICCIÓN
+%-------------------------------------------------------------
+\item \textbf{Principio de contradicción}
+\[p \land (\lnot p) \equiv \mathbf{F}\]
+
+\begin{center}
+	\renewcommand{\arraystretch}{1.4}
+	\begin{tabular}{|c|c|c|}
+		\hline
+		$p$ & $\lnot p$ & $p \land (\lnot p)$ \\
+		\hline
+		\V & \F & \F \\
+		\hline
+		\F & \V & \F \\
+		\hline
+	\end{tabular}
+\end{center}
+\noindent La columna final es siempre \textbf{F}: $p \land (\lnot p)$ es una \textbf{contradicción}.
+
+%-------------------------------------------------------------
+% q) PRINCIPIO DEL TERCERO EXCLUIDO
+%-------------------------------------------------------------
+\item \textbf{Principio del tercero excluido}
+\[p \vee \lnot p \equiv \mathbf{V}\]
+
+\begin{center}
+	\renewcommand{\arraystretch}{1.4}
+	\begin{tabular}{|c|c|c|}
+		\hline
+		$p$ & $\lnot p$ & $p \vee \lnot p$ \\
+		\hline
+		\V & \F & \V \\
+		\hline
+		\F & \V & \V \\
+		\hline
+	\end{tabular}
+\end{center}
+\noindent La columna final es siempre \textbf{V}: $p \vee \lnot p$ es una \textbf{tautología}.
+
+%-------------------------------------------------------------
+% r) DOMINANCIA DE LA CONJUNCIÓN
+%-------------------------------------------------------------
+\item \textbf{Dominancia de la conjunción}
+\[p \land \mathbf{F} \equiv \mathbf{F}\]
+
+\begin{center}
+	\renewcommand{\arraystretch}{1.4}
+	\begin{tabular}{|c|c|c|}
+		\hline
+		$p$ & $\mathbf{F}$ & $p \land \mathbf{F}$ \\
+		\hline
+		\V & \F & \F \\
+		\hline
+		\F & \F & \F \\
+		\hline
+	\end{tabular}
+\end{center}
+\noindent Sin importar el valor de $p$, el resultado es siempre \textbf{F}.
+
+%-------------------------------------------------------------
+% s) DOMINANCIA DE LA DISYUNCIÓN
+%-------------------------------------------------------------
+\item \textbf{Dominancia de la disyunción}
+\[p \vee \mathbf{V} \equiv \mathbf{V}\]
+
+\begin{center}
+	\renewcommand{\arraystretch}{1.4}
+	\begin{tabular}{|c|c|c|}
+		\hline
+		$p$ & $\mathbf{V}$ & $p \vee \mathbf{V}$ \\
+		\hline
+		\V & \V & \V \\
+		\hline
+		\F & \V & \V \\
+		\hline
+	\end{tabular}
+\end{center}
+\noindent Sin importar el valor de $p$, el resultado es siempre \textbf{V}.
+
+%-------------------------------------------------------------
+% t) IDENTIDAD DE LA CONJUNCIÓN
+%-------------------------------------------------------------
+\item \textbf{Identidad de la conjunción}
+\[p \land \mathbf{V} \equiv p\]
+
+\begin{center}
+	\renewcommand{\arraystretch}{1.4}
+	\begin{tabular}{|c|c|c||c|}
+		\hline
+		$p$ & $\mathbf{V}$ & $p \land \mathbf{V}$ & $p \land \mathbf{V} \equiv p$ \\
+		\hline
+		\V & \V & \V & \V \\
+		\hline
+		\F & \V & \F & \V \\
+		\hline
+	\end{tabular}
+\end{center}
+
+%-------------------------------------------------------------
+% u) IDENTIDAD DE LA DISYUNCIÓN
+%-------------------------------------------------------------
+\item \textbf{Identidad de la disyunción}
+\[p \vee \mathbf{F} \equiv p\]
+
+\begin{center}
+	\renewcommand{\arraystretch}{1.4}
+	\begin{tabular}{|c|c|c||c|}
+		\hline
+		$p$ & $\mathbf{F}$ & $p \vee \mathbf{F}$ & $p \vee \mathbf{F} \equiv p$ \\
+		\hline
+		\V & \F & \V & \V \\
+		\hline
+		\F & \F & \F & \V \\
+		\hline
+	\end{tabular}
+\end{center}
+
+\end{enumerate}
+
+
+
+
+% ============================================================
+\section{Tipos de razonamiento}
+% ============================================================
+
+A lo largo de la historia, los seres humanos han enfrentado constantes adversidades: desde la escasez de alimento hasta la identificación de peligros en el entorno. Para sobrevivir a estos desafíos, desarrollamos la capacidad de \textbf{razonar}.
+
+El \textbf{razonamiento} es el proceso mental mediante el cual, a partir de un conjunto de datos o ideas previas denominadas \textbf{premisas}, se deriva una \textbf{conclusión}. Esta habilidad nos permite no solo reaccionar al presente, sino predecir eventos futuros y estructurar el conocimiento de manera lógica.
+
+% ------------------------------------------------------------
+\subsection{Razonamiento Inductivo}
+% ------------------------------------------------------------
+
+El \textbf{razonamiento inductivo} consiste en obtener una conclusión general a partir de la observación de pautas o casos particulares repetidos. Es el método que nos permite descubrir patrones y proponer \textbf{conjeturas}.
+
+Sin embargo, en matemáticas, la inducción por sí sola no constituye una prueba absoluta, ya que la observación de mil casos a favor no garantiza que el caso siguiente no sea una excepción.
+
+\begin{ejem}{Razonamiento inductivo}
+    Observamos que $3+3=6$ y $5+5=10$, ambos pares. \\
+    \textbf{Conjetura inductiva:} ``La suma de dos números impares siempre es un número par''.
+\end{ejem}
+
+% ------------------------------------------------------------
+\subsection{Razonamiento Deductivo}
+% ------------------------------------------------------------
+
+El \textbf{razonamiento deductivo} es aquel que permite obtener una conclusión necesaria a partir de premisas generales o axiomas previamente aceptados. Si las premisas son verdaderas y el razonamiento es válido, la conclusión es \textbf{irrefutable}.
+
+Este es el pilar fundamental de la demostración matemática, pues permite asegurar la verdad universal de una afirmación sin necesidad de probar cada caso individualmente.
+
+\begin{ejem}{Razonamiento deductivo}
+    \begin{itemize}
+        \item \textbf{Premisa 1:} Todo número natural terminado en 0 o 5 es divisible por 5.
+        \item \textbf{Premisa 2:} El número 125 termina en 5.
+        \item \textbf{Conclusión:} Por lo tanto, 125 es divisible por 5.
+    \end{itemize}
+\end{ejem}
+
+% ------------------------------------------------------------
+\subsection{Métodos de demostración}
+% ------------------------------------------------------------
+
+Cuando requerimos realizar una \textbf{demostración}, utilizamos generalmente la forma $p \Rightarrow q$, donde $p$ se denomina \textbf{hipótesis} y $q$ es la \textbf{tesis} (lo que se pretende demostrar). Dentro de los métodos de demostración, existen tres tipos principales:
+
+\begin{enumerate}
+    \item \textbf{Forma directa:} se asume verdadera la hipótesis y se aplican pasos lógicos válidos hasta llegar a la tesis:
+    \begin{center}
+        $p \Rightarrow p_{1}$, \quad $p_{1} \Rightarrow p_{2}$, \quad $\ldots$, \quad $p_{n} \Rightarrow q$
+    \end{center}
+
+    \item \textbf{Forma indirecta (contrarrecíproca):} en lugar de demostrar directamente $p \Rightarrow q$, demostramos su equivalente lógico $\lnot q \Rightarrow \lnot p$, que se lee ``si $q$ es falso, entonces $p$ también es falso''. Ambas formas son siempre equivalentes.
+
+    \begin{ejem}{Demostración indirecta}
+        En vez de probar ``si llueve, el piso se moja'', probamos lo equivalente: ``si el piso \emph{no} está mojado, entonces \emph{no} llovió''.
+    \end{ejem}
+
+    \item \textbf{Por el absurdo (reducción al absurdo):} para probar que una proposición $p$ es verdadera, comenzamos suponiendo lo contrario: que $p$ es \emph{falsa}. Luego, siguiendo pasos lógicos válidos, llegamos a una \textbf{contradicción}. Esa contradicción surgió de nuestra suposición inicial, por lo tanto $p$ debe ser verdadera.
+\end{enumerate}
