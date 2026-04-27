@@ -1,21 +1,72 @@
 \chapter{Conjuntos}
-\section{Conjunto}
-	Un conjunto es una agrupación de objetos (llamados elementos) que pueden tener cualquier naturaleza. Los conjuntos se denotan con letras mayúsculas y sus elementos se agrupan con ``\{\}'' y cada elemento es separado por comas.
-	
-	Si un elemento $x$ está contenido en el conjunto $A$, se dice que $x$ pertenece a conjunto $A$ y se escribe con el siguiente símbolo $\in$ la frase $x$ pertenece al conjunto $A$ queda denotada de la siguiente manera:
-
-\begin{equation}
-	x \in A
-\end{equation}
-
 \section{Definición de Conjunto}
+Un conjunto es una colección bien definida de objetos distintos, denominados elementos, que pueden ser de cualquier naturaleza.
 
-En el marco de la teoría axiomática de conjuntos, el concepto de conjunto se considera un término primitivo o no definido. Intuitivamente, un conjunto es una colección bien definida de objetos distintos, denominados **elementos**, los cuales pueden ser de cualquier naturaleza.
+Para definir un conjunto de manera correcta debemos expresar precisamente que elementos están contenidos por en el.
 
-Convencionalmente, los conjuntos se denotan mediante letras latinas mayúsculas ($A, B, C, \dots$), mientras que sus elementos se denotan con letras minúsculas ($a, b, c, \dots$). La relación fundamental entre un elemento $x$ y un conjunto $A$ es la **relación de pertenencia**, denotada por el símbolo $\in$. 
+\begin{ejem}{Conjuntos}
+ \begin{itemize}
+	\item $A =$ conjunto de todas las camisetas de color rojo.
+	\item $B =$ conjunto de los continentes del mundo.
+	\item $C =$ conjunto de todos los números pares.
+\end{itemize}
+\end{ejem}
 
+Los conjuntos se denotan mediante letras mayúsculas ($A, B, C, \dots$), mientras que sus elementos se denotan con letras minúsculas ($a, b, c, \dots$).
+
+\subsection{Pertenencia} 
 Afirmar que $x$ es un elemento del conjunto $A$ se formaliza mediante la proposición:
 \begin{equation}
 	x \in A
 \end{equation}
-Si el elemento $x$ no pertenece al conjunto $A$, escribimos $x \notin A$. La definición de un conjunto por extensión se realiza enumerando sus elementos entre llaves: $A = \{a_1, a_2, \dots, a_n\}$.
+Si el elemento $x$ no pertenece al conjunto $A$, escribimos $x \notin A$. La definición de un conjunto por extensión se realiza enumerando sus elementos entre llaves y cada elemento se separa mediante comas:
+\begin{equation}
+A = \{a_1, a_2, \dots, a_n\}
+\end{equation}
+Los conjuntos de pueden definir por extensión o por comprensión.
+\subsection{Por extensión}
+Cuando definimos un conjunto por extensión se escriben todos sus elementos separados por comas, sin repetirlos y sin importar el orden.
+\begin{ejem}{conjuntos por extensión}
+	Sean A, B, C y D definidos por extensión.
+	\begin{itemize}
+		\item $A = \{a,b,c,d,e,f\}$
+		\item $B = \{1,2,3,4,5,6,7\}$
+		\item $C = \{2,4,6,8,10\}$
+		\item $D = \{\{a,b\},\{c,d\},e,f\}$, notar que $\{a,b\}$ y $\{c,d\}$ son elementos del conjunto $D$
+	\end{itemize}
+\end{ejem}
+
+\subsection{Por comprensión}
+Para definir un conjunto por comprensión se deben expresar las características para que un elemento pertenezca a dicho conjunto. Los conjuntos definidos por comprensión tienen la siguiente estructura.
+\begin{equation}
+A = \{ x \in U \ | \ P(x)\}
+\end{equation}
+La expresión se lee de la siguiente manera:
+\begin{itemize}
+	\item $x$ un elemento cualquiera
+	\item $\in U$ ese elemento está contemplado en el conjunto $U$
+	\item $|$ tal que
+	\item $P(x)$ los elementos cumplen las características de la función proposicional $P(x)$
+\end{itemize}
+Los elementos del conjunto $A$ son los $x$ que pertenecen al conjunto $U$ tal que $P(x)$.
+
+\begin{ejem}{Conjunto expresado por comprensión}
+	Dado el conjunto A definido por comprensión:
+\begin{itemize}
+	\item $A = \{x \in \mathbb{N} \ | \ x < 3 \}$
+\end{itemize}
+Sabemos que $x$ es un número natural $\mathbb{N}= \{1,2,3,4,5,\dots\}$, veamos que elementos pertenecen al conjunto $A$:
+\begin{itemize}
+	\item $1 \in \mathbb{N}$, y $1<3$ es $V$, entonces $1 \in A$.
+	\item $2 \in \mathbb{N}$, y $2<3$ es $V$, entonces $2 \in A$.
+	\item $3 \in \mathbb{N}$, y $3<3$ es $F$, entonces $3 \notin A$.
+\end{itemize}
+Sabemos que los siguientes números naturales son mayores que $3$ por tanto es absurdo probar con los siguientes números naturales.
+\end{ejem}
+
+\begin{dfn}{Conjunto universal}
+El conjunto universal es el conjunto más grande dentro de una discusión. A veces el conjunto universo se sobreentiende del contexto o puede ser necesario expresarlo 
+
+
+\end{dfn}
+
